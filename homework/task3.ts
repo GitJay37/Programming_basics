@@ -4,7 +4,7 @@
     Utilizando un ciclo FOR, barra todo el arreglo y determine ¿Cuál es el número mayor?
 */
 
-let numbers = [1, 6, 8, 4, 2, 7, 10, 3, 5 ];
+export let numbers = [1, 6, 8, 4, 2, 7, 10, 3, 5 ];
 
 let max = 0;
 
