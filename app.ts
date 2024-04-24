@@ -1,1 +1,1 @@
-console.log("Great! Keep it up!");
+console.log('Keep working hard!');
