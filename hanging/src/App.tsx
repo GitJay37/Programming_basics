@@ -1,13 +1,17 @@
 import {letters} from './helpers/letters';
+import {HangImage} from './components/HangImage';
 import './App.css'
+import { useState } from 'react';
 
 function App() {
+
+  const [attempts] = useState(5);
 
   return (
     <>
       <div>
         { /* My Images */}
-        <h3> Game Image </h3>
+        <HangImage  imageNumber= {9}/>
 
         { /* Hidden Word */}
         <h3>_ _ _ _ _ _ _ _ _ _ _ _ _</h3>
