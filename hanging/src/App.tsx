@@ -5,11 +5,28 @@ import { useState } from 'react';
 
 function App() {
 
-  const [attempts, setAttempts] = useState(0);
+
+  const [ word ] = useState('COMPONENT');
+  const [ hiddenWord, setHiddenWord ] = useState( '_ '.repeat( word.length ) );
+  const  [attempts, setAttempts ] = useState(0);
 
   const checkLetter = (letter: string) => {
-    console.log(letter);
-    setAttempts( Math.min( attempts + 1, 9 ));
+    
+    if( !word.includes(letter) ){
+      setAttempts( Math.min( attempts + 1, 9 ));
+      return;
+    }
+
+    const hiddenWordArray = hiddenWord.split(' ');
+    console.log(hiddenWordArray);
+
+    for (let i = 0; i < word.length; i++) {
+      if(word[i] === letter){
+        hiddenWordArray[i] = letter;
+
+      }
+    }
+    setHiddenWord( hiddenWordArray.join(' '));
   }
 
   return (
@@ -19,7 +36,7 @@ function App() {
         <HangImage  imageNumber= {attempts}/>
 
         { /* Hidden Word */}
-        <h3>_ _ _ _ _ _ _ _ _ _ _ _ _</h3>
+        <h3>{ hiddenWord }</h3>
         
         { /* Counter attempts */}
         <h3> Attempts: {attempts} </h3>
@@ -27,10 +44,10 @@ function App() {
         { /* Letters buttons */}
         
         {
-          letters.map((letter) => ( 
+          letters.map(( letter ) => ( 
             <button 
-              onClick={() => checkLetter(letter)}
-              key = {letter} > {letter} 
+              onClick={() => checkLetter( letter )}
+              key = { letter} > { letter } 
             
             </button>
           ))
