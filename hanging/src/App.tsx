@@ -5,25 +5,34 @@ import { useState } from 'react';
 
 function App() {
 
-  const [attempts] = useState(5);
+  const [attempts, setAttempts] = useState(0);
+
+  const checkLetter = (letter: string) => {
+    console.log(letter);
+    setAttempts( Math.min( attempts + 1, 9 ));
+  }
 
   return (
     <>
       <div>
         { /* My Images */}
-        <HangImage  imageNumber= {9}/>
+        <HangImage  imageNumber= {attempts}/>
 
         { /* Hidden Word */}
         <h3>_ _ _ _ _ _ _ _ _ _ _ _ _</h3>
         
         { /* Counter attempts */}
-        <h3> Attempts: 0 </h3>
+        <h3> Attempts: {attempts} </h3>
       
         { /* Letters buttons */}
         
         {
           letters.map((letter) => ( 
-            <button key = {letter} > {letter} </button>
+            <button 
+              onClick={() => checkLetter(letter)}
+              key = {letter} > {letter} 
+            
+            </button>
           ))
         }
         
