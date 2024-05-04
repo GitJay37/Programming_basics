@@ -2,11 +2,12 @@ import {letters} from './helpers/letters';
 import {HangImage} from './components/HangImage';
 import './App.css'
 import { useEffect, useState } from 'react';
+import { getRandomWord } from './helpers/getRandomWord';
 
 function App() {
 
 
-  const [ word ] = useState('COMPONENT');
+  const [ word ] = useState(getRandomWord());
   const [ hiddenWord, setHiddenWord ] = useState( '_ '.repeat( word.length ) );
   const  [attempts, setAttempts ] = useState(0);
   const [ lose, setLose ] = useState(false);
@@ -72,7 +73,7 @@ function App() {
         {
 
         (won) 
-        ? <h3>Congrats!. You won! <h3>Here it is the word: {word} you guessed </h3></h3> : ''
+        ? <h3>Congrats!. You won! you guessed the word: {word}</h3> : ''
         }
 
         { /* Letters buttons */}
